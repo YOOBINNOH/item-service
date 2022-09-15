@@ -34,7 +34,7 @@ public class ItemRepository {
         findItem.setQuantity(updateParam.getQuantity());
     }
 
-    public  void clearStore(){
+    public void clearStore(){
         store.clear();
     }
 
