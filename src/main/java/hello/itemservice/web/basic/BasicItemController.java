@@ -7,10 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -41,12 +38,32 @@ public class BasicItemController {
         return "basic/addForm";
     }
 
-    @PostMapping("/add")
-    public String save(){
+//    @PostMapping("/add")
+//    public String save(@RequestParam String itemName, @RequestParam int price, @RequestParam Integer quantity, Model model){
+//
+//        Item item = new Item(itemName,price,quantity);
+//        itemRepository.save(item);
+//
+//        model.addAttribute("item",item);
+//
+//         return "basic/item";
+//
+//    }
 
-     return "00";
+    @PostMapping("/add")
+    public String save2(@ModelAttribute("item") Item item,Model model){
+
+
+        itemRepository.save(item);
+
+        model.addAttribute("item",item);
+
+        return "basic/item";
 
     }
+
+
+
 
     @PostConstruct
     public void init(){
